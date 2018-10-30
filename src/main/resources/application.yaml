@@ -1,0 +1,13 @@
+
+server:
+  port: 8080
+  servlet-path: /
+
+management:
+  port: 9001
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  security:
+    enabled: false
