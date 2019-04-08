@@ -14,8 +14,6 @@ select local maven profile
 
 To launch IT tests specify on idea the following properties as VM options:
 
--ea -Djboss-eap.http.url=http://127.0.0.1:8080
-
 Postman collection
 https://www.getpostman.com/collections/8d1d8db7f814a3b404ca
 
