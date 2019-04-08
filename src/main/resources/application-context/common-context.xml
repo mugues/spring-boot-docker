@@ -21,7 +21,7 @@
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager" />	
 	<jpa:repositories base-package="com.sample.repository" entity-manager-factory-ref="entityManagerFactory" />	
 
-	<bean id="localDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+	<bean id="localDataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
 		<!-- 
 		jdbc:h2:mem:test	
 		jdbc:h2:tcp://localhost/~/sample 

@@ -35,8 +35,8 @@ public class DefaultCustomerService implements CustomerService{
 	@Override
 	public Customer findOne(Long idCustomer) {
 		logger.debug("findOne start with idCustomer {}", idCustomer);
-		
-		return customerRepository.findOne(idCustomer);
+
+		return customerRepository.getOne(idCustomer);
 	}
 
 	@Override

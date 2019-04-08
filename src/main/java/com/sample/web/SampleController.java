@@ -19,7 +19,7 @@ import java.util.Properties;
 
 
 @RestController
-public class SampleController {
+public class    SampleController {
 
     private static final Logger logger = LoggerFactory.getLogger(SampleController.class);
 
@@ -47,7 +47,7 @@ public class SampleController {
             logger.error(e.toString());
         }
 
-        String returnString = "Pong ... " + new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime()) + " version: " + implementationVersion+"\n";
+        String returnString = "Pooooong ... " + new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime()) + " version: " + implementationVersion+"\n";
 
         return returnString;
     }
