@@ -1,4 +1,4 @@
-# spring-boot-docker
+# spring-boot-docker [![Build Status](https://travis-ci.org/mugues/spring-boot-docker.svg?branch=master)](https://travis-ci.org/mugues/spring-boot-docker)
 
 # Project Title
 
