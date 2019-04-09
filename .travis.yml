@@ -2,3 +2,11 @@ language: java
 
 script:
 - mvn -q -B -f pom.xml clean verify
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: "b2eb7af1-c1a5-41e5-89f4-1ae9dd35c865"
+  app: mugues-spring-boot-docker
+  on:
+    repo: mugues/spring-boot-docker

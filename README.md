@@ -22,7 +22,8 @@ In maven settings.xml add the following entry:
 ```
 mvn clean install
 ```
- will compile, execute unit tests, run the spring boot application and execute IT tests on local spring boot application.
+will compile, execute unit tests, run the spring boot application and execute IT tests on local spring boot application.
+ 
 if you want to build the docker image on docker hub then
 
 ```
