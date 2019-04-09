@@ -47,7 +47,7 @@ IDEA:
 Run com.sample.Application
 
 Postman collection
-https://www.getpostman.com/collections/8d1d8db7f814a3b404ca
+https://www.getpostman.com/collections/65dc2e45e1fbbb35ceab
 
 
 
