@@ -224,21 +224,21 @@
 				<groupId>com.spotify</groupId>
 				<artifactId>dockerfile-maven-plugin</artifactId>
 				<version>${dockerfile-maven-plugin.version}</version>
+				<!--
 				<executions>
 					<execution>
 						<id>default</id>
 						<phase>install</phase>
 						<goals>
 							<goal>build</goal>
-							<!--
 							<goal>push</goal>
-							-->
 						</goals>
 					</execution>
 				</executions>
+				-->
 				<configuration>
 					<useMavenSettingsForAuth>true</useMavenSettingsForAuth>
-					<repository>mugues/${project.artifactId}</repository>
+					<repository>${docker.image.prefix}/${project.artifactId}</repository>
 				</configuration>
 			</plugin>
 			<!--
