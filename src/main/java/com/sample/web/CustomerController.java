@@ -22,7 +22,7 @@ public class CustomerController {
 	
 	@RequestMapping(value = "/customers", method = RequestMethod.GET)
     List<Customer> findAll() {
-		logger.debug("findAll start1");
+		logger.debug("findAll start");
 		return customerService.findAll();
     }
 

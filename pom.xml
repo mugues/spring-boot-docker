@@ -17,7 +17,7 @@
 
 	<properties>
     	<java.version>1.8</java.version>
-		<spring-boot.version>2.1.4.RELEASE</spring-boot.version>
+		<spring-boot.version>2.3.9.RELEASE</spring-boot.version>
 		<jolokia-core.version>1.6.0</jolokia-core.version>
 		<lombok.version>1.18.6</lombok.version>
 		<camel-core.version>2.23.1</camel-core.version>
@@ -27,9 +27,17 @@
 		<docker.image.prefix>mugues</docker.image.prefix>
 		<dockerfile-maven-plugin.version>1.4.10</dockerfile-maven-plugin.version>
 		<fabric8-maven-plugin.version>4.0.0</fabric8-maven-plugin.version>
+		<metrics-version>0.5.1.RELEASE</metrics-version>
+		<javax-version>2.0.1.Final</javax-version>
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>${javax-version}</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -69,6 +77,16 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-configuration-processor</artifactId>
 			<optional>true</optional>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.metrics</groupId>
+			<artifactId>spring-metrics</artifactId>
+			<version>${metrics-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-registry-prometheus</artifactId>
 		</dependency>
 
 		<dependency>
