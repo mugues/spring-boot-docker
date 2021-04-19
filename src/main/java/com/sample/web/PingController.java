@@ -55,4 +55,17 @@ public class PingController {
         return returnString;
     }
 
+    @RequestMapping(value = "/exception", method = RequestMethod.GET)
+    @ResponseBody
+    public void exception() {
+        logger.debug("executing exception method");
+        try {
+            String tmp = null;
+            logger.debug(tmp.toString());
+        } catch (Exception e) {
+            logger.error("Shit happens...", e);
+        }
+
+    }
+
 }
