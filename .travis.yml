@@ -6,7 +6,7 @@ script:
 deploy:
   provider: heroku
   api_key:
-    secure: "b2eb7af1-c1a5-41e5-89f4-1ae9dd35c865"
+    secure: "e214f3dd-cc28-42d1-ba80-f74180e6ec54"
   app: mugues-spring-boot-docker
   on:
     repo: mugues/spring-boot-docker
