@@ -1,6 +1,6 @@
 <html>
     <body>
-        <form action="#" th:action="@{/}" th:object="${personForm}" method="post">
+        <form name="personForm" action="#" th:action="@{/}" th:object="${personForm}" method="post">
             <table>
                 <tr>
                     <td>Name:</td>
@@ -13,7 +13,7 @@
                     <td th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Age Error</td>
                 </tr>
                 <tr>
-                    <td><button type="submit">Submit</button></td>
+                    <td><button name="submitbutton" type="submit">Submit</button></td>
                 </tr>
             </table>
         </form>
