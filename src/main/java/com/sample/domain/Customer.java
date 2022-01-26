@@ -9,11 +9,11 @@ import javax.persistence.Table;
 import java.io.Serializable;
 
 @Entity
-@Table()
+@Table
 public class Customer implements Serializable{
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID_CUSTOMER")
 	private Long idCustomer; 
 	

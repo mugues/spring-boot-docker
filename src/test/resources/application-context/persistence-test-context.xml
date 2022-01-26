@@ -11,24 +11,14 @@
 
 	<!-- contiene le defizioni del context spring per il modulo persistence -->
 
-	<import resource="classpath:application-context/integration-context.xml" />
-
 	<context:annotation-config />
-	<context:component-scan base-package="com.sample" />
+	<context:component-scan base-package="com.sample.repository" />
 	
 	<tx:annotation-driven />	
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager" />	
 	<jpa:repositories base-package="com.sample.repository" entity-manager-factory-ref="entityManagerFactory" />	
 
 	<bean id="localDataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
-		<!-- 
-		jdbc:h2:mem:test	
-		jdbc:h2:tcp://localhost/~/sample 
-		jdbc:postgresql://ec2-184-72-238-68.compute-1.amazonaws.com:5432/d52l7tfhv7noob?ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory
-		teyqlznuqzbyne
-		Adesd3oq4tVgiav3MRZptqXmKr
-		
-		-->
 		<property name="url" value="jdbc:h2:mem:test"/>
 		<property name="username" value="sample_app" />
 		<property name="password" value="sample_app" />		
@@ -44,7 +34,7 @@
       	<property name="jpaProperties">
         	<props>
             	<prop key="hibernate.hbm2ddl.auto">update</prop>
-            	<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+            	<prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop>
          </props>
       </property>
 	</bean>
