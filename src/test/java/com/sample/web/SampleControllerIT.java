@@ -2,21 +2,30 @@ package com.sample.web;
 
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.*;
+import io.restassured.path.xml.XmlPath;
+import io.restassured.response.Response;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Optional;
 
+import static io.restassured.RestAssured.given;
 import static io.restassured.RestAssured.when;
 
 public class SampleControllerIT {
 
     @Test
     public void testRestAssured() {
-        when().
+        Response response=given().
                 get("/ping").
                 then().
-                statusCode(200);
+                statusCode(200)
+                .and()
+                .log().all()
+                .extract().response();
+
+
+        XmlPath jsXpath= new XmlPath(response.asString());
     }
 
     @Test
