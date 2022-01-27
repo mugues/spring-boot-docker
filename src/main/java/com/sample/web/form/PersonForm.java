@@ -6,7 +6,7 @@
  * ------------------------------------------------------------------------------------------------
  */
 
-package com.sample.web;
+package com.sample.web.form;
 
 
 import javax.validation.constraints.Min;

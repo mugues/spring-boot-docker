@@ -14,7 +14,7 @@ import java.util.Optional;
 
 import static io.restassured.RestAssured.given;
 
-public class SampleControllerIT {
+public class WebControllerIT {
 
     @Test
     public void testRestAssured() {
@@ -57,11 +57,7 @@ public class SampleControllerIT {
     public void submittingForm() throws Exception {
         try (final WebClient webClient = new WebClient()) {
 
-
             final HtmlPage page1 = webClient.getPage("http://localhost:8080/");
-
-            // Get the form that we are dealing with and within that form,
-            // find the submit button and the field that we want to change.
             final HtmlForm form = page1.getFormByName("personForm");
 
             final HtmlTextInput personName = form.getInputByName("name");
