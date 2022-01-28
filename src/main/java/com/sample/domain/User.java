@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "USERS")
@@ -17,7 +18,7 @@ public class User {
     @NotBlank(message = "Name is mandatory")
     private String name;
 
-    @NotBlank(message = "Email is mandatory")
+    @NotEmpty(message = "Email is mandatory")
     private String email;
 
 }

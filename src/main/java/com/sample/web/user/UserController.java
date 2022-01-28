@@ -1,4 +1,4 @@
-package com.sample.web;
+package com.sample.web.user;
 
 import com.sample.domain.User;
 import com.sample.repository.UserRepository;
@@ -19,13 +19,13 @@ public class UserController {
 
     @GetMapping("/signup")
     public String showSignUpForm(User user) {
-        return "add-user";
+        return "user/add-user";
     }
 
-    @GetMapping("/index")
+    @GetMapping("/")
     public String showUserList(Model model) {
         model.addAttribute("users", userRepository.findAll());
-        return "index";
+        return "user/index";
     }
 
     @GetMapping("/edit/{id}")
@@ -34,7 +34,7 @@ public class UserController {
                 .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
 
         model.addAttribute("user", user);
-        return "update-user";
+        return "user/update-user";
     }
 
     // CRUD operations
@@ -42,11 +42,11 @@ public class UserController {
     @PostMapping("/adduser")
     public String addUser(@Valid User user, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return "add-user";
+            return "user/add-user";
         }
 
         userRepository.save(user);
-        return "redirect:/index";
+        return "redirect:/";
     }
 
     @PostMapping("/update/{id}")
@@ -54,11 +54,11 @@ public class UserController {
                              BindingResult result, Model model) {
         if (result.hasErrors()) {
             user.setId(id);
-            return "update-user";
+            return "user/update-user";
         }
 
         userRepository.save(user);
-        return "redirect:/index";
+        return "redirect:/";
     }
 
     @GetMapping("/delete/{id}")
@@ -66,7 +66,7 @@ public class UserController {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
         userRepository.delete(user);
-        return "redirect:/index";
+        return "redirect:/";
     }
 
 
