@@ -2,7 +2,7 @@ package com.sample.domain;
 
 import lombok.Data;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 

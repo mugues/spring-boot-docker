@@ -1,7 +1,7 @@
 	<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-		<modelVersion>4.0.0</modelVersion>
+	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.sample</groupId>
 	<artifactId>spring-boot-docker</artifactId>
 	<packaging>jar</packaging>
@@ -12,29 +12,25 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.5.5</version>
+		<version>3.3.0</version>
 	</parent>
 
 	<properties>
 		<docker.image.prefix>mugues</docker.image.prefix>
-    	<java.version>1.8</java.version>
-		<spring-boot.version>2.5.5</spring-boot.version>
-		<jolokia-core.version>1.7.1</jolokia-core.version>
-		<lombok.version>1.18.20</lombok.version>
-		<camel-core.version>3.11.2</camel-core.version>
-		<metrics-version>0.5.1.RELEASE</metrics-version>
+    	<java.version>17</java.version>
+		<spring-boot.version>3.3.0</spring-boot.version>
+		<lombok.version>1.18.32</lombok.version>
 		<javax-version>2.0.1.Final</javax-version>
-		<springfox-version>3.0.0</springfox-version>
-		<springfox-swaggerui-version>3.0.0</springfox-swaggerui-version>
+		<h2.version>2.1.210</h2.version>
+		<springdoc-openapi-starter-webmvc-ui.version>2.0.2</springdoc-openapi-starter-webmvc-ui.version>
 
 		<!-- test dependencies versions -->
 		<mockito-core.version>3.12.4</mockito-core.version>
-		<rest-assured.version>3.3.0</rest-assured.version>
+		<rest-assured.version>5.4.0</rest-assured.version>
 
 		<!-- plugin dependencies versions -->
 		<maven-failsafe-plugin-version>2.22.2</maven-failsafe-plugin-version>
-		<dockerfile-maven-plugin.version>1.4.10</dockerfile-maven-plugin.version>
-		<fabric8-maven-plugin.version>4.0.0</fabric8-maven-plugin.version>
+		<loki-logback-appender.version>1.5.1</loki-logback-appender.version>
 	</properties>
 
 	<dependencies>
@@ -87,31 +83,19 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.springframework.metrics</groupId>
-			<artifactId>spring-metrics</artifactId>
-			<version>${metrics-version}</version>
-		</dependency>
-		<dependency>
 			<groupId>io.micrometer</groupId>
 			<artifactId>micrometer-registry-prometheus</artifactId>
 		</dependency>
 
 		<dependency>
-			<groupId>org.apache.camel</groupId>
-			<artifactId>camel-core</artifactId>
-			<version>${camel-core.version}</version>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-tracing-bridge-brave</artifactId>
 		</dependency>
 
-
 		<dependency>
-			<groupId>org.jolokia</groupId>
-			<artifactId>jolokia-core</artifactId>
-			<version>${jolokia-core.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.jolokia</groupId>
-			<artifactId>jolokia-spring</artifactId>
-			<version>${jolokia-core.version}</version>
+			<groupId>com.github.loki4j</groupId>
+			<artifactId>loki-logback-appender</artifactId>
+			<version>${loki-logback-appender.version}</version>
 		</dependency>
 
 		<dependency>
@@ -120,14 +104,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-		</dependency>
-
-		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
-			<version>2.1.210</version>
+			<version>${h2.version}</version>
 		</dependency>
 
 		<dependency>
@@ -138,16 +117,11 @@
 		</dependency>
 
 		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-boot-starter</artifactId>
-			<version>${springfox-version}</version>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>${springdoc-openapi-starter-webmvc-ui.version}</version>
 		</dependency>
 
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger-ui</artifactId>
-			<version>${springfox-swaggerui-version}</version>
-		</dependency>
 
 
 		<!-- test dependencies -->
@@ -264,34 +238,6 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-				<groupId>com.spotify</groupId>
-				<artifactId>dockerfile-maven-plugin</artifactId>
-				<version>${dockerfile-maven-plugin.version}</version>
-				<!--
-				<executions>
-					<execution>
-						<id>default</id>
-						<phase>install</phase>
-						<goals>
-							<goal>build</goal>
-							<goal>push</goal>
-						</goals>
-					</execution>
-				</executions>
-				-->
-				<configuration>
-					<useMavenSettingsForAuth>true</useMavenSettingsForAuth>
-					<repository>${docker.image.prefix}/${project.artifactId}</repository>
-				</configuration>
-			</plugin>
-			<!--
-			<plugin>
-				<groupId>io.fabric8</groupId>
-				<artifactId>fabric8-maven-plugin</artifactId>
-				<version>${fabric8-maven-plugin.version}</version>
-			</plugin>
-			-->
         </plugins>
     </build>
 

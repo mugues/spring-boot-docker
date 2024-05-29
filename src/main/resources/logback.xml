@@ -11,11 +11,6 @@
 		</encoder>
 	</appender>
 
-	<root level="WARN">
-		<appender-ref ref="CONSOLE" />
-	</root>
-
-
 	<appender name="applicationFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>/tmp/logs/application.log</file>
 		<append>true</append>
@@ -40,12 +35,31 @@
 		</encoder>
 	</appender>
 
+	<appender name="LOKI" class="com.github.loki4j.logback.Loki4jAppender">
+		<http>
+			<url>http://localhost:3100/loki/api/v1/push</url>
+		</http>
+		<format>
+			<label>
+				<pattern>app=${appName},host=${HOSTNAME},traceID=%X{traceId:-NONE},level=%level</pattern>
+			</label>
+			<message>
+				<pattern>${FILE_LOG_PATTERN}</pattern>
+			</message>
+			<sortByTime>true</sortByTime>
+		</format>
+	</appender>
+
+	<root level="INFO">
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="LOKI"/>
+	</root>
+
 	<property name="application.log.level" value="DEBUG" />
 
 	<logger name="com.sample" level="${application.log.level}" additivity="false">
 		<appender-ref ref="CONSOLE" />
 		<appender-ref ref="applicationFileAppender" />
-
 	</logger>
 
 	<logger name="org.springframework" level="INFO" additivity="false">

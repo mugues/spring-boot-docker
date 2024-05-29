@@ -2,6 +2,7 @@ package com.sample.rest;
 
 import java.util.List;
 
+import io.micrometer.observation.annotation.Observed;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,9 @@ public class CustomerController {
 	
 	@Autowired
 	private CustomerService customerService;
-	
+
+	@Observed(name = "user.name", contextualName = "getting-user-name",
+			lowCardinalityKeyValues = {"userType", "userType2"})
 	@RequestMapping(value = "/customers", method = RequestMethod.GET)
     List<Customer> findAll() {
 		logger.debug("findAll start");
